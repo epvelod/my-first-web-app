@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/epvelod/my-first-web-app.git'
-            }
-        }
         stage('Build') {
             steps {
                 sh './gradlew clean build'
@@ -15,7 +10,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('your-docker-image:latest')
+                    docker.build('first-spring-demo:latest')
                 }
             }
         }
