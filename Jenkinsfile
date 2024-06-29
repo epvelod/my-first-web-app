@@ -5,11 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Hello World'
-                if (isUnix()) {
-                    sh './gradlew clean build'
-                } else {
-                    bat 'gradlew.bat clean build'
-                }
+                ./gradlew build
+
             }
         }
 //         stage('Build Docker Image') {
