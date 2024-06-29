@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-//                 sh './gradlew clean build'
-
                 echo 'Hello World'
+                sh './gradlew build'
+
             }
         }
 //         stage('Build Docker Image') {
