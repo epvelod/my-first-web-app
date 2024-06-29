@@ -4,16 +4,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh './gradlew clean build'
+//                 sh './gradlew clean build'
+
+                echo 'Hello World'
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build('first-spring-demo:latest')
-                }
-            }
-        }
+//         stage('Build Docker Image') {
+//             steps {
+//                 script {
+//                     docker.build('first-spring-demo:latest')
+//                 }
+//             }
+//         }
 //         stage('Deploy') {
 //             steps {
 //                 withDockerRegistry([url: 'https://index.docker.io/v1/', credentialsId: 'dockerhub-credentials']) {
