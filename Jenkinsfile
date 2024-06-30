@@ -7,16 +7,16 @@ pipeline {
                 bat './gradlew.bat clean build'
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                        docker.build('--build-arg PACKAGE_TOKEN=$PUBLISHING_TOKEN first-spring-demo:latest')
-                }
-            }
-        }
         stage('Example') {
             steps {
                 echo "Token: $PUBLISHING_TOKEN"
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                        docker.build('first-spring-demo:latest', '--build-arg PACKAGE_TOKEN=$PUBLISHING_TOKEN')
+                }
             }
         }
 //         stage('Deploy') {
