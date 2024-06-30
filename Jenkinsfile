@@ -11,6 +11,7 @@ pipeline {
             steps {
                 echo "Token: $PUBLISHING_TOKEN"
                 bat './gradlew.bat printProperties'
+                bat './gradlew.bat publishGprPublicationToGitHubPackagesRepository'
             }
         }
         stage('Build Docker Image') {
