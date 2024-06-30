@@ -91,6 +91,6 @@ publishing {
 task printProperties {
 	doLast {
 		println "gpr.user: ${project.findProperty("gpr.user") ?: "Not found"}"
-		println "gpr.token: ${project.findProperty("gpr.token") ?: "Not found"}"
+		println "gpr.token: ${System.getenv("PUBLISHING_TOKEN") ?: "Not found"}"
 	}
 }

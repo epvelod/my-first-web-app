@@ -10,6 +10,7 @@ pipeline {
         stage('Example') {
             steps {
                 echo "Token: $PUBLISHING_TOKEN"
+                bat './gradlew.bat printProperties'
             }
         }
         stage('Build Docker Image') {
