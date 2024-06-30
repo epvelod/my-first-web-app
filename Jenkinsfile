@@ -14,6 +14,16 @@ pipeline {
                 }
             }
         }
+        stage('Example') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'publishing-token', passwordVariable: 'TOKEN', usernameVariable: 'USERNAME')]) {
+                    // Aquí puedes usar las variables de entorno USERNAME y TOKEN
+                    echo "Username: $USERNAME"
+                    echo "Token: $TOKEN"
+                    export PACKAGE_TOKEN=$TOKEN
+                }
+            }
+        }
 //         stage('Deploy') {
 //             steps {
 //                 withDockerRegistry([url: 'https://index.docker.io/v1/', credentialsId: 'dockerhub-credentials']) {

@@ -3,6 +3,7 @@ plugins {
 	id 'org.springframework.boot' version '3.3.1'
 	id 'io.spring.dependency-management' version '1.1.5'
 	id "com.microsoft.azure.azurewebapp" version "1.10.0"
+	id "maven-publish"
 }
 
 group = 'com.ln.azure'
@@ -64,5 +65,32 @@ azurewebapp {
 //	}
 	auth {
 		type = 'oauth2' // support azure_cli, oauth2, device_code and service_principal
+	}
+}
+
+publishing {
+	repositories {
+		maven {
+			name = "GitHubPackages"
+			url = uri("https://maven.pkg.github.com/epvelod/firt-package")
+			credentials {
+				username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+				password = project.findProperty("gpr.token") ?: System.getenv("PACKAGE_TOKEN")
+			}
+		}
+	}
+	publications {
+		gpr(MavenPublication) {
+			groupId = 'com.ln.azure'
+			artifactId = 'first-azure-gradle-spring'
+			version = '0.0.1-SNAPSHOT'
+
+		}
+	}
+}
+task printProperties {
+	doLast {
+		println "gpr.user: ${project.findProperty("gpr.user") ?: "Not found"}"
+		println "gpr.token: ${project.findProperty("gpr.token") ?: "Not found"}"
 	}
 }
