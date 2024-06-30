@@ -74,7 +74,7 @@ publishing {
 			name = "GitHubPackages"
 			url = uri("https://maven.pkg.github.com/epvelod/firt-package")
 			credentials {
-				username = 'epvelod'
+				username = project.findProperty("gpr.user") ?: System.getenv("PUBLISHING_USER")
 				password = project.findProperty("gpr.password") ?: System.getenv("PUBLISHING_TOKEN")
 			}
 		}
@@ -90,7 +90,7 @@ publishing {
 }
 task printProperties {
 	doLast {
-		println "gpr.user: ${project.findProperty("gpr.user") ?: "Not found"}"
-		println "gpr.token: ${System.getenv("PUBLISHING_TOKEN") ?: "Not found"}"
+		println "gpr.user: ${project.findProperty("gpr.user") ?: System.getenv("PUBLISHING_USER")}"
+		println "gpr.password: ${project.findProperty("gpr.password") ?: System.getenv("PUBLISHING_TOKEN")}"
 	}
 }
