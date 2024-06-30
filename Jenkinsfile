@@ -10,6 +10,7 @@ pipeline {
         stage('Example') {
             steps {
                 echo "Token: $PUBLISHING_TOKEN"
+                echo "User: $PUBLISHING_USER"
                 bat './gradlew.bat printProperties'
                 bat './gradlew.bat publishGprPublicationToGitHubPackagesRepository'
             }
