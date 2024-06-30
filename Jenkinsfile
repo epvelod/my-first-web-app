@@ -19,8 +19,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'publishing-token', passwordVariable: 'TOKEN', usernameVariable: 'USERNAME')]) {
                     // Aquí puedes usar las variables de entorno USERNAME y TOKEN
                     echo "Username: $USERNAME"
-                    export PACKAGE_TOKEN=$TOKEN
-
+                    sh 'export PACKAGE_TOKEN=' + TOKEN
                     echo "Token: $PACKAGE_TOKEN"
                 }
             }
