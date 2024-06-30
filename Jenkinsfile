@@ -10,7 +10,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('first-spring-demo:latest')
+                        docker.build('--build-arg PACKAGE_TOKEN=$PUBLISHING_TOKEN first-spring-demo:latest')
                 }
             }
         }
