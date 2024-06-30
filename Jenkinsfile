@@ -16,12 +16,7 @@ pipeline {
         }
         stage('Example') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'publishing-token', passwordVariable: 'TOKEN', usernameVariable: 'USERNAME')]) {
-                    // Aquí puedes usar las variables de entorno USERNAME y TOKEN
-                    echo "Username: $USERNAME"
-                    sh 'export PACKAGE_TOKEN=' + TOKEN
-                    echo "Token: $PACKAGE_TOKEN"
-                }
+                echo "Token: $PUBLISHING_TOKEN"
             }
         }
 //         stage('Deploy') {
